@@ -1,11 +1,12 @@
 import Logo from "@/components/Logo";
-import { ENV } from "@/env";
+// import { ENV } from "@/env";
 import { FrigateConfig } from "@/types/frigateConfig";
 import { NavData } from "@/types/navigation";
 import { useMemo } from "react";
 import { FaCompactDisc, FaVideo } from "react-icons/fa";
-import { LuConstruction } from "react-icons/lu";
+// import { LuConstruction } from "react-icons/lu";
 import { MdVideoLibrary } from "react-icons/md";
+import { GiWarPick } from "react-icons/gi";
 import useSWR from "swr";
 
 export default function useNavigation(
@@ -38,6 +39,13 @@ export default function useNavigation(
           url: "/export",
         },
         {
+          id: 4,
+          variant,
+          icon: GiWarPick,
+          title: "Antminer",
+          url: "/antminer",
+        },
+        {
           id: 5,
           variant,
           icon: Logo,
@@ -45,14 +53,14 @@ export default function useNavigation(
           url: "/plus",
           enabled: config?.plus?.enabled == true,
         },
-        {
-          id: 4,
-          variant,
-          icon: LuConstruction,
-          title: "UI Playground",
-          url: "/playground",
-          enabled: ENV !== "production",
-        },
+        // {
+        //   id: 6,
+        //   variant,
+        //   icon: LuConstruction,
+        //   title: "UI Playground",
+        //   url: "/playground",
+        //   enabled: ENV !== "production",
+        // },
       ] as NavData[],
     [config?.plus.enabled, variant],
   );
